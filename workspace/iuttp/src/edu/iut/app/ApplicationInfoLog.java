@@ -13,4 +13,10 @@ public class ApplicationInfoLog extends AbstractApplicationLog {
         super.fireMessage("[INFO]", this.message);
 	}
 
+	@Override
+	public void addListener(IApplicationLogListener listener) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
