@@ -8,8 +8,8 @@ import java.util.logging.Logger;
 public class ApplicationSession {
 	
 	// Exercice 1 : Gérer l'internationation
-	protected /* Objet permettant la gestion des 'resources bundle' */ resourceBundle;
-	protected /* Objet permettant la gestion des Locales */ locale;
+	protected ResourceBundle  resourceBundle;
+	protected Locale locale;
 	
 	// Exercice 2 : Logger
 	protected Logger sessionGuiLogger;
@@ -19,13 +19,15 @@ public class ApplicationSession {
 	private /*Qu'est ce qu'un singleton ?*/ ApplicationSession session = null;
 	private ApplicationSession() {
 		/* Definir US comme locale par défaut */
-		Locale./* à compléter */
+		Locale.setDefault(Locale.US);
 		
 		locale = Locale.getDefault();
-		resourceBundle = /* à compléter */
-		sessionGuiLogger = /* Initialiser le logger */
-		sessionGuiLogger.setLevel(/* Touls les message doivent être affiché */));
-		sessionExceptionLogger = /* Logger pour exception */
+		resourceBundle = ResourceBundle.getBundle("edt.iut.exeptions",locale);
+		//GLOBAL LOGGER NAME
+		sessionGuiLogger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+				
+		sessionGuiLogger.setLevel(Level.ALL);
+		sessionExceptionLogger = Logger.getLogger(Logger.
 		sessionExceptionLogger.setLevel(/* Touls les message doivent être affiché */);
 	}
 	
