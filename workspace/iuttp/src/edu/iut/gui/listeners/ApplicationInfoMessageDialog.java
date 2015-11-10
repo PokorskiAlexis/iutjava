@@ -7,9 +7,6 @@ public class ApplicationInfoMessageDialog extends
 
 	@Override
 	protected void showMessage(String level, String message) {
-		/** UTILISER l'AIDE FORUNIR DANS L'ENNONCE */
-		JOptionPane jop;
-		jop = new JOptionPane();
-		jop.showMessageDialog(null, "Message d'erreur", "[" + level + "] " + message, JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, message, level, JOptionPane.INFORMATION_MESSAGE, null);
 	}
 }
