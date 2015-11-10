@@ -15,8 +15,8 @@ public abstract class AbstractApplicationLog implements IApplicationLog {
 	
     /** TP1 : Fonction venant de l'interface par héritage */
 	public abstract void setMessage(String message);
-	public ArrayList<IApplicationLogListener> getApplicationLogListeners(){
-		return listeners;
+	public IApplicationLogListener[] getApplicationLogListeners() {
+		return (IApplicationLogListener[])listeners.toArray();
 	}
 	public void addListeners(IApplicationLogListener l){
 		listeners.add(l);
