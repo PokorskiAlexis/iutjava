@@ -28,7 +28,7 @@ public class ApplicationSession {
 				
 		sessionGuiLogger.setLevel(Level.ALL);
 		sessionExceptionLogger = Logger.getLogger(Logger.
-		sessionExceptionLogger.setLevel(/* Touls les message doivent être affiché */);
+		sessionExceptionLogger.setLevel(/* Touls les message doivent être affiché w*/);
 	}
 	
 	
