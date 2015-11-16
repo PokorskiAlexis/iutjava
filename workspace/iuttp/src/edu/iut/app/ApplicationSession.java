@@ -15,20 +15,18 @@ public class ApplicationSession {
 	protected Logger sessionGuiLogger;
 	protected Logger sessionExceptionLogger;
 
-
-	private /*Qu'est ce qu'un singleton ?*/ ApplicationSession session = null;
+	/*Qu'est ce qu'un singleton ? : static */
+	private static ApplicationSession session = null;
 	private ApplicationSession() {
 		/* Definir US comme locale par d√©faut */
-		Locale.setDefault(Locale.US);
-		
-		locale = Locale.getDefault();
-		resourceBundle = ResourceBundle.getBundle("edt.iut.exeptions",locale);
-		//GLOBAL LOGGER NAME
-		sessionGuiLogger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-				
+		//Locale.setDefault(Locale.US);
+		//Pour gÈrer líinternationalisation il faut laisser utiliser la valeur par dÈfaut de la machine : Locale.getDefault()
+		setLocale(Locale.getDefault());
+		sessionGuiLogger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);				
 		sessionGuiLogger.setLevel(Level.ALL);
-		sessionExceptionLogger = Logger.getLogger(Logger.
-		sessionExceptionLogger.setLevel(/* Touls les message doivent √™tre affich√© w*/);
+		sessionExceptionLogger = Logger.getLogger("IUTException");
+		sessionExceptionLogger.setLevel(Level.ALL);		
+
 	}
 	
 	
@@ -49,7 +47,16 @@ public class ApplicationSession {
 	public void setLocale(Locale locale){
 		this.locale = locale;
 		Locale.setDefault(this.locale);
-		resourceBundle=/* r√©cup√©rer les resources */
+		/* r√©cup√©rer les resources ResourceBundle.getBundle("edu.iut.resources.strings.res") */
+		/*Internationalisation FR et US*/
+		if(locale.equals(Locale.FRANCE))
+			resourceBundle=ResourceBundle.getBundle("edu.iut.resources.strings.res_fr");	
+		else if(locale.equals(Locale.US))
+			resourceBundle=ResourceBundle.getBundle("edu.iut.resources.strings.res");
+		else //Langue non gÈrer, on met l'anglais
+			resourceBundle=ResourceBundle.getBundle("edu.iut.resources.strings.res");
+
+					
 	}
 	
 	public String getString(String key) {
