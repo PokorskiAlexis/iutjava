@@ -9,10 +9,8 @@ import edu.iut.app.ApplicationSession;
 
 public class WeekPanel extends EventPanel {
 
-	// Exercice 4
 	public enum WeekDayNames {
 		EMPTYDAY("",""),
-		//On Récupère les strings correspondants à l'aide du ressourcebundle définie en fonction de la langue de l'ordinateur
 		MONDAY(ApplicationSession.instance().getString("monday"),ApplicationSession.instance().getString("mon")),
 		TUESDAY(ApplicationSession.instance().getString("tuesday"),ApplicationSession.instance().getString("tue")),
 		WEDNESDAY(ApplicationSession.instance().getString("wednesday"),ApplicationSession.instance().getString("wed")),
