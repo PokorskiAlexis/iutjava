@@ -14,7 +14,7 @@ public class ApplicationSession {
 	// Exercice 2 : Logger
 	protected Logger sessionGuiLogger;
 	protected Logger sessionExceptionLogger;
-	//salut
+	//salut 21
 	/*Qu'est ce qu'un singleton ? : static */
 	private static ApplicationSession session = null;
 	private ApplicationSession() {
