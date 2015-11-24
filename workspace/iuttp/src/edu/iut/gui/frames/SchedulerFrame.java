@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -46,10 +47,18 @@ public class SchedulerFrame extends JFrame {
 		contentPane.add(dayView,ActiveView.DAY_VIEW.name());
 		contentPane.add(weekView,ActiveView.WEEK_VIEW.name());
 		contentPane.add(monthView,ActiveView.MONTH_VIEW.name());
-	
+		
 		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,agendaViewPanel, contentPane);
 		this.setContentPane(splitPane);
-		
+		JButton nextView = new JButton(ApplicationSession.instance().getString("next"));
+		nextView.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				layerLayout.next(contentPane);				
+			}			
+		});
+		agendaViewPanel.add(nextView);
 		JMenuBar menuBar = new JMenuBar();
 		JMenu menu;
 		JMenu menu2;
