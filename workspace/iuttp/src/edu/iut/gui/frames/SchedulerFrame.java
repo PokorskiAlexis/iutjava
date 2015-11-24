@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 
+import edu.iut.app.ApplicationSession;
 import edu.iut.gui.widget.agenda.AgendaPanelFactory;
 import edu.iut.gui.widget.agenda.ControlAgendaViewPanel;
 import edu.iut.gui.widget.agenda.AgendaPanelFactory.ActiveView;
@@ -26,9 +27,13 @@ public class SchedulerFrame extends JFrame {
 	JPanel dayView;
 	JPanel weekView;
 	JPanel monthView;
-	
+	JMenuBar menuBar = new JMenuBar();
+	JMenu file = new JMenu("File");
+	JMenu edit = new JMenu("Edit");
+	JMenu help = new JMenu("Help");
+	SchedulerFrame me;
 	protected void setupUI() {
-		
+		me = this;
 		contentPane = new JPanel();
 		layerLayout = new CardLayout();
 		contentPane.setLayout(layerLayout);
@@ -46,16 +51,94 @@ public class SchedulerFrame extends JFrame {
 		this.setContentPane(splitPane);
 		
 		JMenuBar menuBar = new JMenuBar();
-		JMenu menu;		
+		JMenu menu;
+		JMenu menu2;
 		JMenuItem menuItem;
 		
 		/* File Menu */
 		/** EX4 : MENU : UTILISER L'AIDE FOURNIE DANS LE TP**/
+		menu = new JMenu(ApplicationSession.instance().getString("file"));
+		menuItem= new JMenuItem(ApplicationSession.instance().getString("load"));
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(me, "Cette fonctionnalité n'est encore disponible.");
+			}			
+		});
+
+		menu.add(menuItem);
+		menuItem= new JMenuItem(ApplicationSession.instance().getString("save"));
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(me, "Cette fonctionnalité n'est encore disponible.");
+			}			
+		});
+
+		menu.add(menuItem);
+		menuItem= new JMenuItem(ApplicationSession.instance().getString("quit"));
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(me, "Cette fonctionnalité n'est encore disponible.");
+			}			
+		});
+
+		menu.add(menuItem);
+		menuBar.add(menu);
 		
+		menu = new JMenu(ApplicationSession.instance().getString("edit"));
+		menu2 = new JMenu(ApplicationSession.instance().getString("view"));
+		menuItem= new JMenuItem(ApplicationSession.instance().getString("month"));
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				layerLayout.show(contentPane, ActiveView.MONTH_VIEW.name());
+			}			
+		});
+
+		menu2.add(menuItem);
+		menuItem= new JMenuItem(ApplicationSession.instance().getString("week"));
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				layerLayout.show(contentPane, ActiveView.WEEK_VIEW.name());
+			}			
+		});
+
+		menu2.add(menuItem);
+		menuItem= new JMenuItem(ApplicationSession.instance().getString("day"));
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				layerLayout.show(contentPane, ActiveView.DAY_VIEW.name());
+			}			
+		});
+
+		menu2.add(menuItem);
+		menu.add(menu2);
+		menuBar.add(menu);
 		
-		menu = new JMenu("File");
-		
-		
+		menu = new JMenu(ApplicationSession.instance().getString("help"));
+		menuItem= new JMenuItem(ApplicationSession.instance().getString("display"));
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(me, "Cette fonctionnalité n'est encore disponible.");
+			}			
+		});
+
+		menu.add(menuItem);
+		menuItem= new JMenuItem(ApplicationSession.instance().getString("about"));
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(me, "Cette fonctionnalité n'est encore disponible.");
+			}			
+		});
+
+		menu.add(menuItem);
+		menuBar.add(menu);
 		this.setJMenuBar(menuBar);
 		this.pack();
 		layerLayout.next(contentPane);

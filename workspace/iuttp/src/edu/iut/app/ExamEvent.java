@@ -5,15 +5,65 @@ import java.util.Date;
 
 public class ExamEvent {
 	public ExamEvent() {		
+		examDate = null;
+		student = null;
+		this.classroom = null;
+		this.jury = null;
+		documents = null;
 	}
 	
 	public ExamEvent(Date date, Person person, ArrayList<Person> jury,
 					Classroom classRoom, ArrayList<Document> document) {
-		
+	examDate = date;
+	student = person;
+	this.classroom = classRoom;
+	this.jury = jury;
+	documents = document;
+	
 	}
 	
 	/** EX2: FAITE LES ACCESSEURS DES ATTRIBUTS, AJOUTER DES ATTRIBUT ? **/
 	protected Date examDate;
+	public Date getExamDate() {
+		return examDate;
+	}
+
+	public void setExamDate(Date examDate) {
+		this.examDate = examDate;
+	}
+
+	public Person getStudent() {
+		return student;
+	}
+
+	public void setStudent(Person student) {
+		this.student = student;
+	}
+
+	public ArrayList<Person> getJury() {
+		return jury;
+	}
+
+	public void setJury(ArrayList<Person> jury) {
+		this.jury = jury;
+	}
+
+	public Classroom getClassroom() {
+		return classroom;
+	}
+
+	public void setClassroom(Classroom classroom) {
+		this.classroom = classroom;
+	}
+
+	public ArrayList<Document> getDocuments() {
+		return documents;
+	}
+
+	public void setDocuments(ArrayList<Document> documents) {
+		this.documents = documents;
+	}
+
 	protected Person student;
 	protected ArrayList<Person> jury;
 	protected Classroom classroom;

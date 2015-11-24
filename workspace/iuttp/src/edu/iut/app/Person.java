@@ -2,11 +2,11 @@ package edu.iut.app;
 
 public class Person {
 	
-	public enum PersonFunction{
+	public static enum PersonFunction{
 		/* EX2 : Internationalisation */
-		NONE("None"),
-		JURY("Jury"),
-		STUDENT("Student");
+		NONE(ApplicationSession.instance().getString("none")),
+		JURY(ApplicationSession.instance().getString("jury")),
+		STUDENT(ApplicationSession.instance().getString("student"));
 		
 		private String personFunction;
 		
@@ -29,6 +29,11 @@ public class Person {
 				  String email,
 				  String phone) {
 		/* EX2: initialisation */;
+		this.personFunction = personFunction;
+		this.firstname= firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.phone = phone;
 	}
 	
 	public void setFunction(PersonFunction function) {
