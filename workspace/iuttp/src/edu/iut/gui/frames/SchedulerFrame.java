@@ -5,15 +5,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.JSplitPane;
+import javax.swing.SpinnerNumberModel;
 
 import edu.iut.app.ApplicationSession;
 import edu.iut.gui.widget.agenda.AgendaPanelFactory;
@@ -34,6 +40,7 @@ public class SchedulerFrame extends JFrame {
 	JMenu help = new JMenu("Help");
 	SchedulerFrame me;
 	protected void setupUI() {
+		
 		me = this;
 		contentPane = new JPanel();
 		layerLayout = new CardLayout();
@@ -50,15 +57,23 @@ public class SchedulerFrame extends JFrame {
 		
 		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,agendaViewPanel, contentPane);
 		this.setContentPane(splitPane);
-		JButton nextView = new JButton(ApplicationSession.instance().getString("next"));
-		nextView.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				layerLayout.next(contentPane);				
-			}			
-		});
-		agendaViewPanel.add(nextView);
+		/** Menu gauche **/		
+		SpinnerNumberModel modelYear = new SpinnerNumberModel(Calendar.getInstance().get(Calendar.YEAR), 2010, 2020, 1);		 
+		JSpinner spinnerYear = new JSpinner(modelYear);
+		agendaViewPanel.add(spinnerYear);
+		
+		JComboBox <String> month = new JComboBox<String>(ApplicationSession.instance().getMonths());
+		month.setSelectedIndex( Calendar.getInstance().get(Calendar.MONTH));
+		
+		int dayt =  Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+		System.out.println(dayt);
+		JComboBox <String> day = new JComboBox<String> (ApplicationSession.instance().getDays());
+		day.setSelectedIndex( Calendar.getInstance().get(Calendar.DAY_OF_WEEK));
+		agendaViewPanel.add(month);
+		agendaViewPanel.add(day);
+		
+		Calendar cal = new GregorianCalendar();
+		System.out.println(cal.getTime());
 		JMenuBar menuBar = new JMenuBar();
 		JMenu menu;
 		JMenu menu2;
