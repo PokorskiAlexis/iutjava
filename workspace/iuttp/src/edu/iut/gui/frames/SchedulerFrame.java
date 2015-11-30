@@ -57,20 +57,7 @@ public class SchedulerFrame extends JFrame {
 		
 		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,agendaViewPanel, contentPane);
 		this.setContentPane(splitPane);
-		/** Menu gauche **/		
-		SpinnerNumberModel modelYear = new SpinnerNumberModel(Calendar.getInstance().get(Calendar.YEAR), 2010, 2020, 1);		 
-		JSpinner spinnerYear = new JSpinner(modelYear);
-		agendaViewPanel.add(spinnerYear);
-		
-		JComboBox <String> month = new JComboBox<String>(ApplicationSession.instance().getMonths());
-		month.setSelectedIndex( Calendar.getInstance().get(Calendar.MONTH));
-		
-		int dayt =  Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
-		System.out.println(dayt);
-		JComboBox <String> day = new JComboBox<String> (ApplicationSession.instance().getDays());
-		day.setSelectedIndex( Calendar.getInstance().get(Calendar.DAY_OF_WEEK));
-		agendaViewPanel.add(month);
-		agendaViewPanel.add(day);
+
 		
 		Calendar cal = new GregorianCalendar();
 		System.out.println(cal.getTime());

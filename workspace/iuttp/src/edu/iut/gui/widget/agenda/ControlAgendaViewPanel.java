@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
@@ -30,6 +31,18 @@ public class ControlAgendaViewPanel extends JPanel {
 		this.agendaViewLayout = layerLayout;
 		this.contentPane = contentPane;
 		/** EX3: REMPLACEMENT DU BOUTON NEXT */
+		/** Menu gauche **/		
+		SpinnerNumberModel modelYear = new SpinnerNumberModel(Calendar.getInstance().get(Calendar.YEAR), 2010, 2020, 1);		 
+		JSpinner spinnerYear = new JSpinner(modelYear);
+		this.add(spinnerYear);
+		
+		JComboBox <String> month = new JComboBox<String>(ApplicationSession.instance().getMonths());
+		month.setSelectedIndex( Calendar.getInstance().get(Calendar.MONTH));
+		JComboBox <String> day = new JComboBox<String> (ApplicationSession.instance().getDays());
+		int dayTMP  = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)-2;
+		day.setSelectedIndex( (dayTMP)<0 ? 6 : (dayTMP));
+		this.add(month);
+		this.add(day);
 	}
 	
 	public int getYear() {
