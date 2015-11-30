@@ -20,7 +20,7 @@ public class ExamEvent {
 	this.jury = jury;
 	documents = document;
 	
-	}
+	}	
 	
 	/** EX2: FAITE LES ACCESSEURS DES ATTRIBUTS, AJOUTER DES ATTRIBUT ? **/
 	protected Date examDate;
