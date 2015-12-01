@@ -140,36 +140,7 @@ public class SchedulerFrame extends JFrame {
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//JOptionPane.showMessageDialog(me, "Cette fonctionnalité n'est encore disponible.");
-				  JFrame fenetre = new JFrame();
-	                
-				    //Définit un titre pour notre fenêtre
-				    fenetre.setTitle("Ma première fenêtre Java");
-				    //Définit sa taille : 400 pixels de large et 100 pixels de haut
-				    fenetre.setSize(200	, 400);
-				    //Nous demandons maintenant à notre objet de se positionner au centre
-				    fenetre.setLocationRelativeTo(null);
-				    //Termine le processus lorsqu'on clique sur la croix rouge
-				    fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				    Agenda tmpagenda = new Agenda();
-				    ExamEvent examtmp = new ExamEvent();
-				    examtmp.setStudent(new Person(null, "", "GrossePute", "", ""));
-				    
-				    tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);
-				    tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);
-				    tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);
-				    tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);
-				    tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);
-				    tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);
-				    tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);
-				    tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);
-				    tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);
-				    tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);tmpagenda.add(examtmp);
-				    
-				    
-				    fenetre.setContentPane(new ListExamEventPanel(tmpagenda));
-				    //Et enfin, la rendre visible        
-				    fenetre.setVisible(true);
+				JOptionPane.showMessageDialog(me, "Cette fonctionnalité n'est encore disponible.");
 			}			
 		});
 
