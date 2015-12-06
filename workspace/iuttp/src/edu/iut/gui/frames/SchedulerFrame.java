@@ -38,6 +38,7 @@ public class SchedulerFrame extends JFrame {
 	JPanel dayView;
 	JPanel weekView;
 	JPanel monthView;
+	JPanel editEvent;
 	JMenuBar menuBar = new JMenuBar();
 	JMenu file = new JMenu("File");
 	JMenu edit = new JMenu("Edit");
@@ -51,7 +52,7 @@ public class SchedulerFrame extends JFrame {
 		contentPane.setLayout(layerLayout);
 		ControlAgendaViewPanel agendaViewPanel = new ControlAgendaViewPanel(layerLayout,contentPane);
 		agendaPanelFactory = new AgendaPanelFactory();
-		
+		editEvent = new JPanel();
 		dayView = agendaPanelFactory.getAgendaView(ActiveView.DAY_VIEW);
 		weekView = agendaPanelFactory.getAgendaView(ActiveView.WEEK_VIEW);
 		monthView = agendaPanelFactory.getAgendaView(ActiveView.MONTH_VIEW);
@@ -61,7 +62,8 @@ public class SchedulerFrame extends JFrame {
 		contentPane.add(monthView,ActiveView.MONTH_VIEW.name());
 		
 		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,agendaViewPanel, contentPane);
-		this.setContentPane(splitPane);
+		JSplitPane splitPane2 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,splitPane,editEvent);
+		this.setContentPane(splitPane2);
 
 		
 		Calendar cal = new GregorianCalendar();

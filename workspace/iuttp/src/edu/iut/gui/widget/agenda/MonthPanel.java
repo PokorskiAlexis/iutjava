@@ -18,7 +18,7 @@ public class MonthPanel extends EventPanel {
 		this.setLayout(daysOfMonthLayout);
 		GregorianCalendar calendar = new GregorianCalendar();		
 		for (int di = 0;di<calendar.getActualMaximum(Calendar.DAY_OF_MONTH);di++) {
-			JPanel day = new DayPanel(ActiveView.MONTH_VIEW,WeekDayNames.EMPTYDAY);
+			JPanel day = new DayPanel(ActiveView.MONTH_VIEW,WeekDayNames.EMPTYDAY,di+1);
 			this.add(day);
 		}
 	}

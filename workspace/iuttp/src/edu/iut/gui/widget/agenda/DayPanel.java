@@ -1,8 +1,10 @@
 package edu.iut.gui.widget.agenda;
 
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -11,7 +13,7 @@ import edu.iut.gui.widget.agenda.WeekPanel.WeekDayNames;
 
 public class DayPanel extends EventPanel {
 
-	public DayPanel(ActiveView activeView,WeekDayNames weekDayNames) {
+	public DayPanel(ActiveView activeView,WeekDayNames weekDayNames,Object daynum) {
 		super(activeView);
 		switch (activeView) {
 		case DAY_VIEW:
@@ -36,9 +38,17 @@ public class DayPanel extends EventPanel {
 			break;
 		case MONTH_VIEW:
 			JPanel hour = new JPanel();
-			hour.add(new JLabel("H"));
+			hour.setLayout((new BoxLayout(hour, BoxLayout.Y_AXIS)));
+			hour.add(new JLabel(Integer.toString((int)daynum)));
+			hour.add(new JLabel("9h even"));
+			hour.add(new JLabel("10h even"));
+			hour.add(new JLabel("11h even"));
+			hour.add(new JLabel("8h even"));
+			hour.add(new JLabel("9h even"));
+			hour.add(new JLabel("10h even"));
+			hour.add(new JLabel("11h even"));
 			this.add(hour);
-		
+			
 		}
 	}
 	

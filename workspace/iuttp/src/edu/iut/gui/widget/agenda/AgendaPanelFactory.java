@@ -42,7 +42,7 @@ public class AgendaPanelFactory {
 				agendaView = weekPanel;
 				break;
 			case DAY_VIEW:
-				DayPanel dayPanel = new DayPanel(activeView,WeekDayNames.EMPTYDAY);
+				DayPanel dayPanel = new DayPanel(activeView,WeekDayNames.EMPTYDAY,null);
 				agendaView = dayPanel;
 				break;
 			default:
