@@ -30,19 +30,23 @@ public class ControlAgendaViewPanel extends JPanel {
 
 		this.agendaViewLayout = layerLayout;
 		this.contentPane = contentPane;
+		JPanel dateSelectPanel = new JPanel();
+		dateSelectPanel.setLayout(new BoxLayout(dateSelectPanel, BoxLayout.PAGE_AXIS));
 		/** EX3: REMPLACEMENT DU BOUTON NEXT */
 		/** Menu gauche **/		
 		SpinnerNumberModel modelYear = new SpinnerNumberModel(Calendar.getInstance().get(Calendar.YEAR), 2010, 2020, 1);		 
 		JSpinner spinnerYear = new JSpinner(modelYear);
-		this.add(spinnerYear);
+		
 		
 		JComboBox <String> month = new JComboBox<String>(ApplicationSession.instance().getMonths());
 		month.setSelectedIndex( Calendar.getInstance().get(Calendar.MONTH));
 		JComboBox <String> day = new JComboBox<String> (ApplicationSession.instance().getDays());
 		int dayTMP  = Calendar.getInstance().get(Calendar.DAY_OF_WEEK)-2;
 		day.setSelectedIndex( (dayTMP)<0 ? 6 : (dayTMP));
-		this.add(month);
-		this.add(day);
+		dateSelectPanel.add(spinnerYear);
+		dateSelectPanel.add(month);
+		dateSelectPanel.add(day);
+		this.add(dateSelectPanel,BorderLayout.CENTER);
 	}
 	
 	public int getYear() {
