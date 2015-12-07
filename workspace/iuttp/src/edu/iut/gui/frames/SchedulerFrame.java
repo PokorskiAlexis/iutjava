@@ -1,11 +1,14 @@
 package edu.iut.gui.frames;
 
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import javax.swing.JButton;
@@ -17,42 +20,82 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JSplitPane;
 import javax.swing.SpinnerNumberModel;
 
 import edu.iut.app.Agenda;
 import edu.iut.app.ApplicationSession;
+import edu.iut.app.Classroom;
+import edu.iut.app.Document;
 import edu.iut.app.ExamEvent;
 import edu.iut.app.Person;
 import edu.iut.gui.widget.agenda.AgendaPanelFactory;
 import edu.iut.gui.widget.agenda.ControlAgendaViewPanel;
+import edu.iut.gui.widget.agenda.EditExamEvent;
 import edu.iut.gui.widget.agenda.AgendaPanelFactory.ActiveView;
 import edu.iut.gui.widget.agenda.ListExamEventPanel;
+import edu.iut.tools.IUTScheduler;
 
 
 public class SchedulerFrame extends JFrame {
+	public ArrayList<Person> personsJury;
+	public ArrayList<Person> eleves;
+	JSplitPane splitPane2;
+	JSplitPane splitPane;
 	JPanel contentPane;
 	CardLayout layerLayout;
 	AgendaPanelFactory agendaPanelFactory;	
 	JPanel dayView;
 	JPanel weekView;
 	JPanel monthView;
-	JPanel editEvent;
+	EditExamEvent editEvent;
 	JMenuBar menuBar = new JMenuBar();
 	JMenu file = new JMenu("File");
 	JMenu edit = new JMenu("Edit");
 	JMenu help = new JMenu("Help");
-	SchedulerFrame me;
+	public static SchedulerFrame me;
+	public void initTest(){
+		personsJury = new ArrayList<Person>();
+		personsJury.add(new Person(Person.PersonFunction.JURY,"Jury1","Jury1lastname","Jury1@u-psud.fr","0607080901"));
+		personsJury.add(new Person(Person.PersonFunction.JURY,"Jury2","Jury2lastname","Jury2@u-psud.fr","0607080901"));
+		personsJury.add(new Person(Person.PersonFunction.JURY,"Jury3","Jury3lastname","Jury3@u-psud.fr","0607080901"));
+		personsJury.add(new Person(Person.PersonFunction.JURY,"Jury4","Jury4lastname","Jury4@u-psud.fr","0607080901"));
+		eleves = new ArrayList<Person>();
+		eleves.add(new Person(Person.PersonFunction.STUDENT,"Eleve1","Eleve1lastname","eleve1@u-psud.fr","0607080901"));
+		eleves.add(new Person(Person.PersonFunction.STUDENT,"Eleve2","Eleve2lastname","eleve2@u-psud.fr","0607080901"));
+		eleves.add(new Person(Person.PersonFunction.STUDENT,"Eleve3","Eleve3lastname","eleve3@u-psud.fr","0607080901"));
+		eleves.add(new Person(Person.PersonFunction.STUDENT,"Eleve4","Eleve4lastname","eleve4@u-psud.fr","0607080901"));
+	
+	}
+	public void test(){
+		initNewEditExam();
+		ExamEvent ee = new ExamEvent();
+		ee.setClassroom(new Classroom("12B"));
+		ee.setStudent(eleves.get(2));
+		Date test;
+		ee.setExamDate(new Date(2015,12-1,06-1));
+		ArrayList<Person> jury = new ArrayList<Person>();
+		ArrayList<Document> docs = new ArrayList<Document>();
+		jury.add(personsJury.get(1));
+		jury.add(personsJury.get(2));
+		ee.setJury(jury);
+		docs.add(new Document("c:\\doc.txt"));
+		docs.add(new Document("c:\\doc2.txt"));
+		ee.setDocuments(docs);
+		editEvent.initEditPanel(null);
+	}
 	protected void setupUI() {
-		
+		initTest();
+		JScrollPane paneEdit = new JScrollPane();
 		me = this;
 		contentPane = new JPanel();
 		layerLayout = new CardLayout();
 		contentPane.setLayout(layerLayout);
 		ControlAgendaViewPanel agendaViewPanel = new ControlAgendaViewPanel(layerLayout,contentPane);
 		agendaPanelFactory = new AgendaPanelFactory();
-		editEvent = new JPanel();
+	
 		dayView = agendaPanelFactory.getAgendaView(ActiveView.DAY_VIEW);
 		weekView = agendaPanelFactory.getAgendaView(ActiveView.WEEK_VIEW);
 		monthView = agendaPanelFactory.getAgendaView(ActiveView.MONTH_VIEW);
@@ -61,9 +104,10 @@ public class SchedulerFrame extends JFrame {
 		contentPane.add(weekView,ActiveView.WEEK_VIEW.name());
 		contentPane.add(monthView,ActiveView.MONTH_VIEW.name());
 		
-		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,agendaViewPanel, contentPane);
-		JSplitPane splitPane2 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,splitPane,editEvent);
-		this.setContentPane(splitPane2);
+		this.splitPane2 = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,contentPane,null);				
+		this.splitPane= new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,agendaViewPanel, splitPane2);
+		
+		this.setContentPane(splitPane);
 
 		
 		Calendar cal = new GregorianCalendar();
@@ -142,7 +186,8 @@ public class SchedulerFrame extends JFrame {
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(me, "Cette fonctionnalité n'est encore disponible.");
+				//JOptionPane.showMessageDialog(me, "Cette fonctionnalité n'est encore disponible.");
+				me.test();
 			}			
 		});
 
@@ -158,10 +203,19 @@ public class SchedulerFrame extends JFrame {
 		menu.add(menuItem);
 		menuBar.add(menu);
 		this.setJMenuBar(menuBar);
-		this.pack();
+		
 		layerLayout.next(contentPane);
+		this.pack();
+		
 	}
-	
+
+	public EditExamEvent initNewEditExam(){
+		this.editEvent = new EditExamEvent();
+		this.editEvent.setPreferredSize(new Dimension(350,500));
+		splitPane2.setRightComponent(this.editEvent);
+		this.pack();
+		return this.editEvent;
+	}
 	public SchedulerFrame() {
 		super();
 		

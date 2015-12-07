@@ -5,11 +5,11 @@ import java.util.Date;
 
 public class ExamEvent {
 	public ExamEvent() {		
-		examDate = null;
-		student = null;
-		this.classroom = null;
-		this.jury = null;
-		documents = null;
+		examDate = new Date(2015,0,1,0,0);
+		student = new Person();
+		this.classroom = new Classroom();
+		this.jury = new ArrayList<Person>();
+		documents = new ArrayList<Document>();
 	}
 	
 	public ExamEvent(Date date, Person person, ArrayList<Person> jury,
@@ -23,7 +23,13 @@ public class ExamEvent {
 	}	
 	
 	/** EX2: FAITE LES ACCESSEURS DES ATTRIBUTS, AJOUTER DES ATTRIBUT ? **/
-	protected Date examDate;
+	protected Date examDate;	
+	protected Person student;
+	protected ArrayList<Person> jury;
+	protected Classroom classroom;
+	protected ArrayList<Document> documents;
+	
+	
 	public Date getExamDate() {
 		return examDate;
 	}
@@ -64,9 +70,6 @@ public class ExamEvent {
 		this.documents = documents;
 	}
 
-	protected Person student;
-	protected ArrayList<Person> jury;
-	protected Classroom classroom;
-	protected ArrayList<Document> documents;
+
 	 
 }

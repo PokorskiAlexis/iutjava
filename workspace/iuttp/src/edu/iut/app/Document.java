@@ -16,6 +16,8 @@ public class Document {
 	public String getDocumentURI() {
 		return documentURI;
 	}
-	
+	public String toString(){
+		return documentURI;
+	}
 	protected String documentURI;
 }

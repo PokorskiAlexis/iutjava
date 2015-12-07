@@ -68,7 +68,10 @@ public class Person {
 	public String getPhone() {
 		return phone;
 	}
-
+	public String toString(){
+		return this.firstname + " " + this.lastname ;
+		
+	}
 	
 	protected PersonFunction personFunction;
 	protected String firstname;
