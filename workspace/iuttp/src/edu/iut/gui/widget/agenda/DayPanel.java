@@ -15,8 +15,19 @@ import edu.iut.gui.listeners.DayPanelListener;
 import edu.iut.gui.widget.agenda.AgendaPanelFactory.ActiveView;
 import edu.iut.gui.widget.agenda.WeekPanel.WeekDayNames;
 
+// TODO: Auto-generated Javadoc
+/**
+ * La Classe DayPanel.
+ */
 public class DayPanel extends EventPanel {
 
+	/**
+	 * Crée un nouveau jour panel.
+	 *
+	 * @param activeView la vue active
+	 * @param weekDayNames les jours de la semaines
+	 * @param daynum le numero du jour
+	 */
 	public DayPanel(ActiveView activeView,WeekDayNames weekDayNames,Object daynum) {
 		super(activeView);
 		switch (activeView) {
@@ -69,12 +80,23 @@ public class DayPanel extends EventPanel {
 		}
 	}
 	
+	/**
+	 * Setup ui day view.
+	 */
 	protected void setupUIDayView() {
 		
 	}
+	
+	/**
+	 * Setup ui week view.
+	 */
 	protected void setupUIWeekView() {
 		
 	}
+	
+	/**
+	 * Setup ui month view.
+	 */
 	protected void setupUIMonthView() {
 		
 	}

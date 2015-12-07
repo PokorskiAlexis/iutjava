@@ -9,27 +9,57 @@ import javax.swing.JPanel;
 
 import edu.iut.gui.widget.agenda.WeekPanel.WeekDayNames;
 
+// TODO: Auto-generated Javadoc
+/**
+ * La classe AgendaPanelFactory.
+ */
 public class AgendaPanelFactory {
 
+	/**
+	 * l'enumeration des vues
+	 */
 	public enum ActiveView{
+		
+		/** La vue par mois. */
 		MONTH_VIEW("Month View"),
+		
+		/** La vue par semaine. */
 		WEEK_VIEW("Week View"),
+		
+		/** La vue par joue. */
 		DAY_VIEW("Day View");
 		
 		private String activeView;
 		
+		/**
+		 * Crée une nouveau vue active
+		 *
+		 * @param activeView la vue active
+		 */
 		ActiveView(String activeView) {
 			this.activeView = activeView;
 		}
 		
+		/* (non-Javadoc)
+		 * @see java.lang.Enum#toString()
+		 */
 		public String toString() {
 			return activeView;
 		}		
 	}
 	
+	/**
+	 * Crée un nouvel agenda panel factory.
+	 */
 	public AgendaPanelFactory() {
 	}
 	
+	/**
+	 * Obtenir la vue de l'agenda
+	 *
+	 * @param activeView la vue active
+	 * @return la vue de l'agenda
+	 */
 	public JPanel getAgendaView(ActiveView activeView) {
 		JPanel agendaView = null;
 		switch (activeView) {

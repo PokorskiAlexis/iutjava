@@ -29,43 +29,111 @@ import edu.iut.app.ExamEvent;
 import edu.iut.app.Person;
 import edu.iut.gui.frames.SchedulerFrame;
 
+// TODO: Auto-generated Javadoc
+/**
+ * La classe EditExamEvent.
+ */
 public class EditExamEvent extends JPanel{
+    
+    /** The button ajout jury. */
     private JButton buttonAjoutJury;
+    
+    /** The button supp jury. */
     private JButton buttonSuppJury;
+    
+    /** The button supp doc. */
     private JButton buttonSuppDoc;
+    
+    /** The button ajout doc. */
     private JButton buttonAjoutDoc;
+    
+    /** The button confirm modifs. */
     private JButton buttonConfirmModifs;
+    
+    /** The button supprimer event. */
     private JButton buttonSupprimerEvent;
+    
+    /** The combo box date mois. */
     private JComboBox<String> comboBoxDateMois;
+    
+    /** The combo box date jours. */
     private JComboBox<String> comboBoxDateJours;
+    
+    /** The label jury. */
     private JLabel labelJury;
+    
+    /** The label document. */
     private JLabel labelDocument;
+    
+    /** The label date. */
     private JLabel labelDate;
+    
+    /** The label eleve. */
     private JLabel labelEleve;
+    
+    /** The label salle. */
     private JLabel labelSalle;
+    
+    /** The spinner annee. */
     private JSpinner spinnerAnnee;
+    
+    /** The spinner heure. */
     private JSpinner spinnerHeure;
+    
+    /** The spinner jour. */
     private JSpinner spinnerJour;
+    
+    /** The list documents. */
     private JList<Document> listDocuments;
+    
+    /** The list jury. */
     private JList<Person> listJury;
+    
+    /** The list model document. */
     private DefaultListModel<Document> listModelDocument;
+    
+    /** The list model jury. */
     private DefaultListModel<Person> listModelJury;
     
+	/** The list eleve. */
 	private JComboBox<Person> listEleve;
+	
+	/** The list model eleve. */
 	private DefaultComboBoxModel<Person> listModelEleve;
 	
+    /** The text field nom eleve. */
     private JTextField textFieldNomEleve;
+    
+    /** The text field salle. */
     private JTextField textFieldSalle;
  
+    /** The scrollpane jury. */
     private JScrollPane scrollpaneJury;
+    
+    /** The scrollpane docs. */
     private JScrollPane scrollpaneDocs;
+    
+    /** The me. */
     private EditExamEvent me;
+    
+    /** The new event. */
     private boolean newEvent = false;
+    
+    /** The current exam event. */
     private ExamEvent currentExamEvent;
+    
+    /**
+     * Crée un nouveau edits the exam event.
+     */
     public EditExamEvent(){
     	me = this;
     }
 
+	/**
+	 * Initialise le panel de modification d'examevent.
+	 *
+	 * @param currentExamEvent L'examEvent actuel
+	 */
 	@SuppressWarnings("unchecked")
 	public void initEditPanel(ExamEvent currentExamEvent){
 		if(currentExamEvent!=null){
@@ -241,6 +309,10 @@ public class EditExamEvent extends JPanel{
 	        initJury();           
 	        initNomEleve();   	
 	}
+	
+	/**
+	 * Bouton Confirmation des modification.
+	 */
 	public void confirModif(){
 		
 		
@@ -266,22 +338,38 @@ public class EditExamEvent extends JPanel{
 		}
 		
 	}
+    
+    /**
+     * Initialise la date.
+     */
     public void initDate(){
     	spinnerJour.setValue(currentExamEvent.getExamDate().getDate());
     	spinnerHeure.setValue(currentExamEvent.getExamDate().getHours());
     	spinnerAnnee.setValue(currentExamEvent.getExamDate().getYear());
     }
+    
+    /**
+     * Initialise le jury.
+     */
     public void initJury(){        
     	for (Person x : currentExamEvent.getJury()){
     		listModelJury.addElement(x);
     	}
     }
+    
+    /**
+     * Initialise les eleves.
+     */
     public void initNomEleve(){
 		for (Person x : SchedulerFrame.me.eleves){
 			listModelEleve.addElement(x);
 		}
 		listModelEleve.setSelectedItem(currentExamEvent.getStudent());
     }
+    
+    /**
+     * Initialise les documents.
+     */
     public void initDocs(){
         
     	for (Document x : currentExamEvent.getDocuments()){
@@ -289,9 +377,20 @@ public class EditExamEvent extends JPanel{
     	}
     }
 
+	/**
+	 * Ajoute un jury
+	 *
+	 * @param p le jury(personne)
+	 */
 	public void addJury(Person p) {		
 		listModelJury.addElement(p);		
 	}
+	
+	/**
+	 * Ajoute un documents
+	 *
+	 * @param s une chaine de caractère(PATH)
+	 */
 	public void addDocument(String s){
 		listModelDocument.addElement(new Document(s));
 	}

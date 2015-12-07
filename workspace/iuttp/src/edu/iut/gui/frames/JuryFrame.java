@@ -17,11 +17,30 @@ import javax.swing.JPanel;
 import edu.iut.app.Person;
 import edu.iut.gui.widget.agenda.EditExamEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * La classe JuryFrame.
+ */
 public class JuryFrame extends JFrame{
+	
+	/** The me. */
 	private JuryFrame me;
+	
+	/** The list. */
 	private JComboBox<Person> list;
+	
+	/** The list model document. */
 	private DefaultComboBoxModel<Person> listModelDocument;
+	
+	/** The content pane. */
 	private JPanel contentPane;
+	
+	/**
+	 * Crée une nouvelle fenêtre listant les jury.
+	 *
+	 * @param jury le jury
+	 * @param panelEvent un panel event
+	 */
 	public JuryFrame(ArrayList<Person> jury,EditExamEvent panelEvent){
 		this.setTitle("Liste des juristes");		
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -8,7 +8,17 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * La Classe IUTScheduler.
+ */
 public class IUTScheduler {
+	
+	/**
+	 * La fenêtre
+	 *
+	 * 
+	 */
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.FRANCE);
 		CommandLineParser commandLineParser = new CommandLineParser();

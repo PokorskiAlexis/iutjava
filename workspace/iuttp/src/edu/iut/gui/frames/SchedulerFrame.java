@@ -35,27 +35,66 @@ import edu.iut.gui.widget.agenda.AgendaPanelFactory;
 import edu.iut.gui.widget.agenda.ControlAgendaViewPanel;
 import edu.iut.gui.widget.agenda.EditExamEvent;
 import edu.iut.gui.widget.agenda.AgendaPanelFactory.ActiveView;
-import edu.iut.gui.widget.agenda.ListExamEventPanel;
 import edu.iut.tools.IUTScheduler;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * La classe SchedulerFrame.
+ */
 public class SchedulerFrame extends JFrame {
+	
+	/** Liste des personnes du jury. */
 	public ArrayList<Person> personsJury;
+	
+	/** Liste d'eleve. */
 	public ArrayList<Person> eleves;
+	
+	/** Un splitpanel. */
 	JSplitPane splitPane2;
+	
+	/** Un splitpanel. */
 	JSplitPane splitPane;
+	
+	/** Un JPanel. */
 	JPanel contentPane;
+	
+	/** Un layout. */
 	CardLayout layerLayout;
+	
+	/** Un AgendaPanelFactory */
 	AgendaPanelFactory agendaPanelFactory;	
+	
+	/** Le panel des vues par jours */
 	JPanel dayView;
+	
+	/** Le panel des vues par semaines. */
 	JPanel weekView;
+	
+	/** Le panel des vues par mois. */
 	JPanel monthView;
+	
+	/** Un EditExamEvent. */
 	public EditExamEvent editEvent;
+	
+	/** Le bar menu */
 	JMenuBar menuBar = new JMenuBar();
+	
+	/** Le bouton file. */
 	JMenu file = new JMenu("File");
+	
+	/** Le bouton modifier. */
 	JMenu edit = new JMenu("Edit");
+	
+	/** Le bouton Aide. */
 	JMenu help = new JMenu("Help");
+	
+	/** The me. */
 	public static SchedulerFrame me;
+	
+	/**
+	 * Initialisation des tests.
+	 */
 	public void initTest(){
 		//Quelques données ajoutées pour démonstration
 		personsJury = new ArrayList<Person>();
@@ -70,6 +109,10 @@ public class SchedulerFrame extends JFrame {
 		eleves.add(new Person(Person.PersonFunction.STUDENT,"Eleve4","Eleve4lastname","eleve4@u-psud.fr","0607080901"));
 	
 	}
+	
+	/**
+	 * Test.
+	 */
 	public void test(){
 		initNewEditExam();
 		//Test avec un exam existant, et un exam null (un nouveau)
@@ -90,6 +133,10 @@ public class SchedulerFrame extends JFrame {
 		*/
 		editEvent.initEditPanel(null);
 	}
+	
+	/**
+	 * Setup ui.
+	 */
 	protected void setupUI() {
 		initTest();
 		JScrollPane paneEdit = new JScrollPane();
@@ -220,6 +267,11 @@ public class SchedulerFrame extends JFrame {
 		
 	}
 
+	/**
+	 * Initialisation d'un edit exam.
+	 *
+	 * @return the edits un EditExamEvent
+	 */
 	public EditExamEvent initNewEditExam(){
 		this.editEvent = new EditExamEvent();
 		this.editEvent.setPreferredSize(new Dimension(350,500));
@@ -227,6 +279,10 @@ public class SchedulerFrame extends JFrame {
 		this.pack();
 		return this.editEvent;
 	}
+	
+	/**
+	 * Crée une nouvelle fenetre d'agenda
+	 */
 	public SchedulerFrame() {
 		super();
 		
@@ -243,6 +299,12 @@ public class SchedulerFrame extends JFrame {
 		setupUI();
 
 	}
+	
+	/**
+	 * Crée une nouvelle fenetre d'agenda.
+	 *
+	 * @param title un titre
+	 */
 	public SchedulerFrame(String title) {
 		super(title);
 		addWindowListener (new WindowAdapter(){

@@ -5,17 +5,37 @@ import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+// TODO: Auto-generated Javadoc
+/**
+ * La Classe ApplicationSession.
+ */
 public class ApplicationSession {
 	
+	/** The resource bundle. */
 	protected ResourceBundle resourceBundle;
+	
+	/** The locale. */
 	protected Locale locale;
+	
+	/** The session gui logger. */
 	protected Logger sessionGuiLogger;
+	
+	/** The session exception logger. */
 	protected Logger sessionExceptionLogger;
+	
+	/** The months. */
 	protected String[] months;
+	
+	/** The days. */
 	protected String[] days;
 
 
+	/** The session. */
 	private static ApplicationSession session = null;
+	
+	/**
+	 * Crée une nouvelle application session.
+	 */
 	private ApplicationSession() {
 		locale = Locale.getDefault();
 		resourceBundle = ResourceBundle.getBundle("edu.iut.resources.strings.res");
@@ -39,6 +59,11 @@ public class ApplicationSession {
 	}
 	
 	
+	/**
+	 * Crée une instance(Session) d'applicationSession
+	 *
+	 * @return Une instance
+	 */
 	static public ApplicationSession instance() {
 		if (session == null) {			
 			session = new ApplicationSession();
@@ -46,26 +71,59 @@ public class ApplicationSession {
 		return session;
 	}
 	
+	/**
+	 * Récupere le GUILogger.
+	 *
+	 * @return Le GUI logger
+	 */
 	public Logger getGUILogger() {
 		return sessionGuiLogger;
 	}
+	
+	/**
+	 * Recupere l'exception du logger.
+	 *
+	 * @return L'exception du logger
+	 */
 	public Logger getExceptionLogger() {
 		return sessionExceptionLogger;
 	}
 	
+	/**
+	 * Modifie la variable Locale
+	 *
+	 * @param locale une variable de type Locale
+	 */
 	public void setLocale(Locale locale){
 		this.locale = locale;
 		Locale.setDefault(this.locale);
 		resourceBundle=ResourceBundle.getBundle("edu.iut.resources.strings.res");
 	}
 	
+	/**
+	 * Retourne la chaine de caractère d'une clé
+	 *
+	 * @param Clé de type String
+	 * @return La chaine de caractère
+	 */
 	public String getString(String key) {
 		return resourceBundle.getString(key);
 	}
 	
+	/**
+	 * Obtenir les jours
+	 *
+	 * @return les jours
+	 */
 	public String[] getDays() {
 		return days;
 	}
+	
+	/**
+	 * Obtenir les mois.
+	 *
+	 * @return les mois
+	 */
 	public String[] getMonths() {
 		return months;
 	}

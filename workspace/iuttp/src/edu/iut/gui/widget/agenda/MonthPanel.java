@@ -10,8 +10,15 @@ import javax.swing.JPanel;
 import edu.iut.gui.widget.agenda.AgendaPanelFactory.ActiveView;
 import edu.iut.gui.widget.agenda.WeekPanel.WeekDayNames;
 
+// TODO: Auto-generated Javadoc
+/**
+ * La classe MonthPanel.
+ */
 public class MonthPanel extends EventPanel {
 
+	/**
+	 * Crée le nouveau panel des mois.
+	 */
 	public MonthPanel() {
 		super(ActiveView.MONTH_VIEW);
 		GridLayout daysOfMonthLayout = new GridLayout(7,5);		

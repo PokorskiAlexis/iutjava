@@ -4,22 +4,42 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.io.File;
 
+// TODO: Auto-generated Javadoc
+/**
+ * La Classe CommandLineParser.
+ */
 public class CommandLineParser {
 	
+	/** Les options. */
 	protected HashMap<String, CommandLineOption<?>> options;
+	
+	/** Tableau d'erreur lors du traitement des arguments */
 	protected ArrayList<String> parseErrors;
 		
+	/**
+	 * Crée une nouvelle CommandLineParser.
+	 */
 	public CommandLineParser() {
 		options = new HashMap<String, CommandLineOption<?> >();
 		parseErrors = new ArrayList<String>();
 	}
 	
+	/**
+	 * Ajouter des options.
+	 *
+	 * @param option à rajouter
+	 */
 	public void addOption(CommandLineOption<?> option) {
 		if (option != null) {
 			options.put(option.getKey(),option);
 		}
 	}
 	
+	/**
+	 * Traite les arguments
+	 *
+	 * @param args l'argument
+	 */
 	public void parse(String[] args) {
 		for (String argument: args) {
 			String[] keyValue=argument.split("=");
@@ -78,6 +98,12 @@ public class CommandLineParser {
 		}
 	}
 	
+	/**
+	 * Obtenir l'option en fonction d'une chaine de caractère.
+	 *
+	 * @param key la chaine
+	 * @return l'option
+	 */
 	public CommandLineOption<?> getOption(String key) {
 		if (options.containsKey(key)) {
 			return options.get(key);
@@ -85,6 +111,11 @@ public class CommandLineParser {
 		return null;
 	}
 	
+	/**
+	 * Obtenir les erreurs
+	 *
+	 * @return les erreurs
+	 */
 	public ArrayList<String> getErrors() {
 		return parseErrors;
 	}
