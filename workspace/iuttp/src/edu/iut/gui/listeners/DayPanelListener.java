@@ -41,6 +41,7 @@ public class DayPanelListener implements MouseListener  {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
+		System.out.println("test");
 		SchedulerFrame.me.editEvent.initEditPanel(this.ee);
 	}
 

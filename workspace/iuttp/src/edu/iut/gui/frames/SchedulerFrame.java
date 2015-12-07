@@ -57,6 +57,7 @@ public class SchedulerFrame extends JFrame {
 	JMenu help = new JMenu("Help");
 	public static SchedulerFrame me;
 	public void initTest(){
+		//Quelques données ajoutées pour démonstration
 		personsJury = new ArrayList<Person>();
 		personsJury.add(new Person(Person.PersonFunction.JURY,"Jury1","Jury1lastname","Jury1@u-psud.fr","0607080901"));
 		personsJury.add(new Person(Person.PersonFunction.JURY,"Jury2","Jury2lastname","Jury2@u-psud.fr","0607080901"));
@@ -71,7 +72,8 @@ public class SchedulerFrame extends JFrame {
 	}
 	public void test(){
 		initNewEditExam();
-		ExamEvent ee = new ExamEvent();
+		//Test avec un exam existant, et un exam null (un nouveau)
+		/*ExamEvent ee = new ExamEvent();
 		ee.setClassroom(new Classroom("12B"));
 		ee.setStudent(eleves.get(2));
 		Date test;
@@ -84,6 +86,8 @@ public class SchedulerFrame extends JFrame {
 		docs.add(new Document("c:\\doc.txt"));
 		docs.add(new Document("c:\\doc2.txt"));
 		ee.setDocuments(docs);
+		editEvent.initEditPanel(ee);
+		*/
 		editEvent.initEditPanel(null);
 	}
 	protected void setupUI() {
@@ -150,6 +154,14 @@ public class SchedulerFrame extends JFrame {
 		menuBar.add(menu);
 		
 		menu = new JMenu(ApplicationSession.instance().getString("edit"));
+		menuItem= new JMenuItem("Add ExamEvent (test)");
+		menuItem.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				test();
+			}			
+		});
+		menu.add(menuItem);
 		menu2 = new JMenu(ApplicationSession.instance().getString("view"));
 		menuItem= new JMenuItem(ApplicationSession.instance().getString("month"));
 		menuItem.addActionListener(new ActionListener() {
@@ -186,8 +198,7 @@ public class SchedulerFrame extends JFrame {
 		menuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//JOptionPane.showMessageDialog(me, "Cette fonctionnalité n'est encore disponible.");
-				me.test();
+				JOptionPane.showMessageDialog(me, "Cette fonctionnalité n'est encore disponible.");
 			}			
 		});
 
